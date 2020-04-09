@@ -1,13 +1,12 @@
 import React from 'react';
+import './global.css';
 
-import Header from './Header';
+import Routes from './routes';
 
 function App() {
-  return (
-    <Header>
-        Projeto Ficr
-    </Header>
-  );
+    return(
+        <Routes />
+    );
 }
 
 export default App;
