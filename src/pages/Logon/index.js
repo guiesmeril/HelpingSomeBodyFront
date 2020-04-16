@@ -8,7 +8,7 @@ import './styles.css'
 
 
 import logoImg from '../../assents/logo.png'
-import Dashboard from '../Dashboard';
+import Donates from '../Donates';
 
 
 
@@ -26,9 +26,9 @@ export default function Logon(){
 
             localStorage.setItem('email', response.data.email);
             localStorage.setItem('senha', senha);
-            history.push('/dashboard');
+            history.push('/donates');
         } catch (err){
-            alert('Usuário/Senha não localizado, Favor Verificar.')
+            alert('Usuário ou Senha não incorretos, Favor Verificar.')
         }
     }
 
