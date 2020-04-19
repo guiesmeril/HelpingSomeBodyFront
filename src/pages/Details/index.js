@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2 } from 'react-icons/fi';
+import { FiPower, FiTrash2,FiArrowLeft } from 'react-icons/fi';
 
 import api from '../../services/api';
 
@@ -9,7 +9,7 @@ import './styles.css';
  
 import logoImg from '../../assents/logo.png'
 
-export default function Donates () {
+export default function Details () {
     const [donates, setDonates] = useState([]);
 
     const history = useHistory();
@@ -41,32 +41,37 @@ export default function Donates () {
             <header>
                <img src={logoImg} alt= "HelpingSomeBodyFront" />
                <span>Bem vindo(a), {nome}</span>
-
-                <Link className ="button" to="newdonates">Cadastrar nova doação</Link>
-                <button onClick={handleLogout} type="button"> 
-                    <FiPower size ={18} color ="#3b5998" />
-                </button>
             </header>
-            <h1>Doações cadastradas</h1>
+
+            <h1>Detalhes da doação</h1>
             <ul>
                {donates.map(donates => (
                    <li key ={donates.id}>
 
-                   <strong>ID DA DOAÇÃO</strong> 
-                   <p>{donates.id}</p> 
+                    <strong>ID DA DOAÇÃO:</strong>
+                    <p>{donates.id}</p>
 
-                   <strong>CASO:</strong>
-                   <p>{donates.title}</p>
+                    <strong>CASO:</strong>
+                    <p>{donates.title}</p>
    
-                   <strong>DESCRIÇÃO</strong>
-                   <p>{donates.description}</p>
+                    <strong>DESCRIÇÃO</strong>
+                    <p>{donates.description}</p>
                 
-                   <strong>TELEFONE:</strong>
-                   <p>{donates.telefone}</p>
+                    <strong>TELEFONE:</strong>
+                    <p>{donates.telefone}</p>
 
-                   <a class="button" href="/details" >Desejo ajudar!</a>
+                    <strong>E-MAIL:</strong>
+                    <p>{donates.emails}</p>
 
-                   </li> 
+                    <h1>Para ajudar essa doação, favor entrar em contato com o Telefone/E-mail que foi informado no cadastro da doação!</h1>
+                    <h1> Desde já agradecemos sua intenção em ajudar.</h1>
+
+                    <Link className="back-link" to= "/donates">
+                    <FiArrowLeft size={20} color="#3b5998" />
+                    Voltar para as Doações!
+                    </Link>
+
+                    </li> 
                ))}
             </ul>
         </div>

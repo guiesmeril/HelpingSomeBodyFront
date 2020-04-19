@@ -13,6 +13,8 @@ export default function Donates() {
     const [title,setTitle] = useState('');
     const [description,setDescription] = useState('');
     const [cpf,setCpf] = useState('');
+    const [telefone,setTelefone] = useState('');
+    const [emails,setEmails] = useState('');
 
     const history = useHistory();
 
@@ -27,7 +29,11 @@ export default function Donates() {
         title,
         description,
         cpf,
+        telefone,
+        emails
     }
+
+
 
     try {
         const response = await api.post('newdonates', data, {
@@ -37,8 +43,8 @@ export default function Donates() {
             }
         })
 
-        alert (`Cadastro realizado, com sucesso!`);
-        history.push('/');
+        alert (`Cadastro de doação realizado, com sucesso!`);
+        history.push('/donates');
     } catch (err){
         alert('Erro ao cadastrar doação, tente novamente!')
     }
@@ -56,24 +62,37 @@ export default function Donates() {
                 placeholder= "Titulo da doação" 
                 value={title}
                 onChange={e => setTitle(e.target.value)}
-                />
+                required/>
 
                 <textarea 
                 placeholder="Descrição da doação"
                 value ={description}
                 onChange={e => setDescription(e.target.value)}
-                />
+                required/>
+
                 <input maxLength = "11"
                 placeholder = "Informe seu CPF" 
                 value={cpf}
                 onChange={e => setCpf(e.target.value)}
-                />
+                required/>
+
+                <input maxLength = "11"
+                placeholder = "Informe seu Telefone"
+                value={telefone}
+                onChange={e => setTelefone(e.target.value)}
+                required/>
+
+                <input 
+                placeholder ="Informe seu E-mail" 
+                value ={emails}
+                onChange={e => setEmails(e.target.value)}
+                required/>
 
                 <button className="button" type ="submit"> Cadastrar</button>
 
-                <Link className="back-link" to= "/">
+                <Link className="back-link" to= "/donates">
                 <FiArrowLeft size={20} color="#3b5998" />
-                    Voltar para o Inicio!
+                    Voltar para as Doações!
                 </Link>
             </form>
         </div>
