@@ -9,73 +9,84 @@ import './styles.css';
  
 import logoImg from '../../assents/logo.png'
 
-export default function Details () {
-    const [donates, setDonates] = useState([]);
-
-    const history = useHistory();
-
-    const email = localStorage.getItem ('email');
-    const senha = localStorage.getItem ('senha');
-    const nome = localStorage.getItem ('nome');
+class Details extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            donates: [],
+            email: localStorage.getItem('email'),
+            senha: localStorage.getItem('senha'),
+            nome: localStorage.getItem('nome'),
+            donate: {}
+        }
+    }
  
-
-    useEffect(()=> {
-        api.get('donates',{
-            headers: {
-                Authorization: email,
-                Authorization: senha
-            }
-        }).then(response => {
-            setDonates(response.data);
-        })
-    }, [email,senha]);
-
-
-    function handleLogout() {
-        localStorage.clear();
-        history.push('/');
+    async componentDidMount() {
+        await this.useEffect()
+        this.getDonate()  
     }
 
-    return (
-        <div className="profile-container">
-            <header>
-               <img src={logoImg} alt= "HelpingSomeBodyFront" />
-               <span>Bem vindo(a), {nome}</span>
-            </header>
+    useEffect = async () => {
+        const donates = await api.get('donates',{
+            headers: {
+                Authorization: this.state.email,
+                Authorization: this.state.senha
+            }
+        })
+        this.setState({ donates: donates.data });
+    } 
 
-            <h1>Detalhes da doação</h1>
-            <ul>
-               {donates.map(donates => (
-                   <li key ={donates.id}>
+    getDonate = () => {
+        console.log(this.state.donates)
+        const donate = this.state.donates.find( donate => donate.id == this.props.match.params.id )
+        this.setState({ donate: donate })
+    }
 
-                    <strong>ID DA DOAÇÃO:</strong>
-                    <p>{donates.id}</p>
+    handleLogout = () => {
+        localStorage.clear();
+        useHistory().push('/');
+    }
 
-                    <strong>CASO:</strong>
-                    <p>{donates.title}</p>
-   
-                    <strong>DESCRIÇÃO</strong>
-                    <p>{donates.description}</p>
-                
-                    <strong>TELEFONE:</strong>
-                    <p>{donates.telefone}</p>
+    render() {
+        return (
+            <div className="profile-container">
+                <header>
+                <img src={logoImg} alt= "HelpingSomeBodyFront" />
+                <span>Bem vindo(a), {this.state.nome}</span>
+                </header>
 
-                    <strong>E-MAIL:</strong>
-                    <p>{donates.emails}</p>
+                <h1>Detalhes da doação</h1>
+                <ul>
+                    <li key ={this.state.donate.id}>
 
-                    <h1>Para ajudar essa doação, favor entrar em contato com o Telefone/E-mail que foi informado no cadastro da doação!</h1>
-                    <h1> Desde já agradecemos sua intenção em ajudar.</h1>
+                        <strong>ID DA DOAÇÃO:</strong>
+                        <p>{this.state.donate.id}</p>
 
-                    <Link className="back-link" to= "/donates">
-                    <FiArrowLeft size={20} color="#3b5998" />
-                    Voltar para as Doações!
-                    </Link>
+                        <strong>CASO:</strong>
+                        <p>{this.state.donate.title}</p>
+    
+                        <strong>DESCRIÇÃO</strong>
+                        <p>{this.state.donate.description}</p>
+                    
+                        <strong>TELEFONE:</strong>
+                        <p>{this.state.donate.telefone}</p>
 
-                    </li> 
-               ))}
-            </ul>
-        </div>
+                        <strong>E-MAIL:</strong>
+                        <p>{this.state.donate.emails}</p>
 
+                        <h1>Para ajudar essa doação, favor entrar em contato com o Telefone/E-mail que foi informado no cadastro da doação!</h1>
+                        <h1> Desde já agradecemos sua intenção em ajudar.</h1>
 
-    );
+                        <Link className="back-link" to= "/donates">
+                        <FiArrowLeft size={20} color="#3b5998" />
+                        Voltar para as Doações!
+                        </Link>
+
+                        </li> 
+                </ul>
+            </div>
+        );
+    }
 }
+
+export default Details

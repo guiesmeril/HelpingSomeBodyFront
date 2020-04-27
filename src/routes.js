@@ -24,7 +24,7 @@ export default function Routes(){
 
         <Route path="/donates"  component ={Donates} />
 
-        <Route  path="/details"  component ={Details} />
+        <Route  path="/details/:id"  component ={Details} />
 
         </Switch>
         </BrowserRouter>

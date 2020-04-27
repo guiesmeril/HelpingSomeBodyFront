@@ -18,6 +18,7 @@ export default function Donates () {
     const senha = localStorage.getItem ('senha');
     const nome = localStorage.getItem ('nome');
  
+    const [donatess, setDonatess] = useState([]);
 
     useEffect(()=> {
         api.get('donates',{
@@ -29,6 +30,21 @@ export default function Donates () {
             setDonates(response.data);
         })
     }, [email,senha]);
+
+    async function handleDetailsDonate (id) {
+        try{
+            await api.get(`donates/${id}`,{
+                headers: {
+                    Authorization: email,
+                    Authorization: senha
+                }
+            });
+            setDonatess(donates.filter(donatess => donatess.id !== id))
+        }catch(err){
+            alert('Erro ao listar os detalhes da doação, tente novamente!')
+        }
+    }
+
 
 
     function handleLogout() {
@@ -60,14 +76,15 @@ export default function Donates () {
    
                    <strong>DESCRIÇÃO</strong>
                    <p>{donates.description}</p>
-                
-                   <strong>TELEFONE:</strong>
-                   <p>{donates.telefone}</p>
 
-                   <a class="button" href="/details" >Desejo ajudar!</a>
+
+                   <a class="button" href={"/details/" + donates.id }>Desejo ajudar!</a>
 
                    </li> 
                ))}
+
+                
+
             </ul>
         </div>
 

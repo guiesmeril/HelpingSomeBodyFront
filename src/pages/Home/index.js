@@ -19,6 +19,12 @@ import logoImg from '../../assents/logo.png'
             </header>
 
             <h1>Página inicial</h1>
+
+            <h1>Quem somos?</h1>
+
+            <h1>Como doar?</h1>
+
+            <h1>Contatos</h1>
             
         </div>
         
