@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2 } from 'react-icons/fi';
+import { FiPower, FiTrash2,FiArrowLeft } from 'react-icons/fi';
 
 import api from '../../services/api';
 
@@ -83,9 +83,13 @@ export default function Donates () {
                    </li> 
                ))}
 
-                
+                    <Link className="back-link" to= "/">
+                        <FiArrowLeft size={20} color="#3b5998" />
+                        Voltar para a página principal!
+                    </Link>
 
             </ul>
+            
         </div>
 
 
