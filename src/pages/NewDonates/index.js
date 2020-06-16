@@ -75,14 +75,9 @@ export default function Donates() {
                 required/>
 
                 <input maxLength = "11"
-                placeholder = "Informe seu CPF" 
-                value={cpf}
-                onChange={e => setCpf(e.target.value)}
-                required/>
-
-                <input maxLength = "11"
                 placeholder = "Informe seu Telefone"
                 value={telefone}
+                type='number'
                 onChange={e => setTelefone(e.target.value)}
                 required/>
 
