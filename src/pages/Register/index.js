@@ -53,33 +53,35 @@ export default function Register() {
                     placeholder= "Seu Nome" 
                     value={nome}
                     onChange ={e => setNome(e.target.value)}
-                    />
+                    required/>
 
                     <input 
                     placeholder ="CPF" 
+                    maxLength = "11"
                     value ={cpf}
                     onChange ={e => setCpf(e.target.value)}
-                    />
+                    required/>
 
                     <input 
                     type="email" 
                     placeholder="E-mail"
                     value ={email}
                     onChange ={e => setEmail(e.target.value)}
-                    />
+                    required/>
 
                     <input 
                     type= "password" 
                     placeholder="Senha"
                     value ={senha}
                     onChange ={e => setSenha(e.target.value)}
-                    />
+                    required/>
 
                     <input 
                     placeholder ="Telefone" 
+                    maxLength = "11"
                     value ={telefone}
                     onChange ={e => setTelefone(e.target.value)}
-                    />
+                    required/>
                   
                   <div className="input-group">
                         <input 
@@ -94,7 +96,7 @@ export default function Register() {
                         //style={{ width: 100 }} 
                         value ={estado}
                         onChange ={e => setEstado(e.target.value)}
-                        />
+                        required/>
                     </div>
                     <button className="button" type ="submit"> Cadastrar</button>
                     <Link className="back-link" to= "/">

@@ -74,6 +74,14 @@ class Details extends React.Component {
                         <strong>E-MAIL:</strong>
                         <p>{this.state.donate.emails}</p>
 
+                        
+                        <strong>CIDADE:</strong>
+                        <p>{this.state.donate.cidade}</p>
+
+                        
+                        <strong>ESTADO:</strong>
+                        <p>{this.state.donate.estado}</p>
+
                         <h1>Para ajudar essa doação, favor entrar em contato com o Telefone/E-mail que foi informado no cadastro da doação!</h1>
                         <h1> Desde já agradecemos sua intenção em ajudar.</h1>
 

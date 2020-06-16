@@ -15,11 +15,14 @@ export default function Donates() {
     const [cpf,setCpf] = useState('');
     const [telefone,setTelefone] = useState('');
     const [emails,setEmails] = useState('');
+    const [cidade,setCidade] = useState('');
+    const [estado,setEstado] = useState('');
 
     const history = useHistory();
 
     const email = localStorage.getItem('email');
     const senha = localStorage.getItem('senha');
+
 
     async function handleNewDonate(e){
         e.preventDefault();
@@ -30,9 +33,10 @@ export default function Donates() {
         description,
         cpf,
         telefone,
-        emails
+        emails,
+        cidade,
+        estado
     }
-
 
 
     try {
@@ -83,10 +87,28 @@ export default function Donates() {
                 required/>
 
                 <input 
-                placeholder ="Informe seu E-mail" 
-                value ={emails}
-                onChange={e => setEmails(e.target.value)}
+                    type="email" 
+                    placeholder="E-mail"
+                    value ={emails}
+                    onChange ={e => setEmails(e.target.value)}
                 required/>
+
+                <div className="input-group">
+                        <input 
+                        placeholder="Cidade" 
+                        value ={cidade}
+                        onChange ={e => setCidade(e.target.value)}
+                        />
+
+                        <input 
+                        placeholder="Estado" 
+                        maxLength = "2"
+                        //style={{ width: 100 }} 
+                        value ={estado}
+                        onChange ={e => setEstado(e.target.value)}
+                        required />
+                    </div>
+
 
                 <button className="button" type ="submit"> Cadastrar</button>
 

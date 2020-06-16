@@ -77,6 +77,12 @@ export default function Donates () {
                    <strong>DESCRIÇÃO</strong>
                    <p>{donates.description}</p>
 
+                   <strong>CIDADE</strong>
+                   <p>{donates.cidade}</p>
+
+                   <strong>ESTADO</strong>
+                   <p>{donates.estado}</p>
+
 
                    <a class="button" href={"/details/" + donates.id }>Desejo ajudar!</a>
 
