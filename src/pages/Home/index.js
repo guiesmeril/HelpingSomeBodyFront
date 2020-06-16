@@ -12,6 +12,9 @@ import logoImg from '../../assents/logo.png'
 
 
    export default function Home() {
+
+    const history = useHistory();
+
     return (
         <div className="profile-container">
             <header>
@@ -28,7 +31,12 @@ import logoImg from '../../assents/logo.png'
 
             <h1>Como doar?</h1>
             <p>Para visualizar as doações basta clicar no botão abaixo:</p>
-            <a class="button" href="/donates"> Doações!</a>
+            <a onClick={() => history.push("/logon")} class="button"> Doações!</a>
+
+            <h1>Quer ajudar nosso site a continuar no ar? </h1>
+            <p>Para ajudar nosso site a continuar funcionando, basta enviar um e-mail para gente com o assunsto
+                "Quero ajudar o site", que iremos enviar nossas informações para vocês doar.
+            </p>
 
             <h1>Contatos</h1>
             <p>Email: helpingsomebody@gmail.com</p>

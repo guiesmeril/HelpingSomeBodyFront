@@ -1,32 +1,33 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-
 import Logon from './pages/Logon';
 import Register from './pages/Register';
 import Donates from './pages/Donates';
 import NewDonates from './pages/NewDonates';
 import Home from './pages/Home';
 import Details from './pages/Details'
+import PrivateRoute from './auth';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 export default function Routes(){
     return (
-        <BrowserRouter>
-        <Switch>
+        <React.StrictMode>
+		<BrowserRouter>
+		  <Switch>
+				        
+          <Route path="/" exact component ={Home} />
 
-        
-        <Route path="/" exact component ={Home} />
+<Route path="/logon" exact component ={Logon} />
 
-        <Route path="/logon"  component ={Logon} />
+<Route path="/register" component ={Register} />
+    
+<PrivateRoute path="/newdonates" component ={NewDonates} />    
 
-        <Route path="/register" component ={Register} />
-            
-        <Route path="/newdonates" component ={NewDonates} />    
+<PrivateRoute path="/donates"  component ={Donates} />
 
-        <Route path="/donates"  component ={Donates} />
-
-        <Route  path="/details/:id"  component ={Details} />
-
-        </Switch>
-        </BrowserRouter>
+<PrivateRoute  path="/details/:id"  component ={Details} />
+      </Switch>
+		</BrowserRouter>
+	</React.StrictMode>
     )
 }
+

@@ -45,7 +45,7 @@ export default function Donates () {
         }
     }
 
-
+    
 
     function handleLogout() {
         localStorage.clear();
@@ -64,6 +64,7 @@ export default function Donates () {
                 </button>
             </header>
             <h1>Doações cadastradas</h1>
+
             <ul>
                {donates.map(donates => (
                    <li key ={donates.id}>
@@ -92,7 +93,7 @@ export default function Donates () {
                     <Link className="back-link" to= "/">
                         <FiArrowLeft size={20} color="#3b5998" />
                         Voltar para a página principal!
-                    </Link>
+                    </Link>        
 
             </ul>
             

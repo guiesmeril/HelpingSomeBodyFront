@@ -92,22 +92,24 @@ export default function Donates() {
                     value ={emails}
                     onChange ={e => setEmails(e.target.value)}
                 required/>
-
-                <div className="input-group">
-                        <input 
-                        placeholder="Cidade" 
-                        value ={cidade}
-                        onChange ={e => setCidade(e.target.value)}
-                        />
-
-                        <input 
+                    
+                <input 
                         placeholder="Estado" 
                         maxLength = "2"
                         //style={{ width: 100 }} 
                         value ={estado}
                         onChange ={e => setEstado(e.target.value)}
-                        required />
-                    </div>
+                required />
+
+                <input 
+                        placeholder="Cidade" 
+                        value ={cidade}
+                        onChange ={e => setCidade(e.target.value)}
+                required/>
+
+
+ 
+
 
 
                 <button className="button" type ="submit"> Cadastrar</button>

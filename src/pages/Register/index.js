@@ -36,7 +36,7 @@ export default function Register() {
         
         alert (`Cadastro realizado, com sucesso!`);
 
-        history.push('/');
+        history.push('/logon');
         } catch (err) {
             alert ('Erro no cadastro, tente novamente!')
         }
@@ -58,6 +58,7 @@ export default function Register() {
                     <input 
                     placeholder ="CPF" 
                     maxLength = "11"
+                    type='number'
                     value ={cpf}
                     onChange ={e => setCpf(e.target.value)}
                     required/>
